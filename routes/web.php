@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', fn() => 'It works!');
+
 Route::middleware(['throttle:api'])->group(function () {
     Route::get('api/search/{q}', function (string $q) {
         $ytAPIKey = env('YOUTUBE_DATA_API_KEY', null);
