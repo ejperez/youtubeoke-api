@@ -17,13 +17,17 @@ class AllowSpecificDomainsMiddleware
     {
         $allowedOrigins = env('ALLOWED_ORIGINS', []);
 
-        if (!empty($allowedOrigins)) {
-            $allowedOrigins = explode(',', $allowedOrigins);
+        var_dump($allowedOrigins);
 
-            if (!in_array($request->getHost(), $allowedOrigins)) {
-                return response()->json(['message' => 'Unauthorized'], 401);
-            }
-        }
+        var_dump($request->getHost());
+
+        // if (!empty($allowedOrigins)) {
+        //     $allowedOrigins = explode(',', $allowedOrigins);
+
+        //     if (!in_array($request->getHost(), $allowedOrigins)) {
+        //         return response()->json(['message' => 'Unauthorized'], 401);
+        //     }
+        // }
 
         return $next($request);
     }
