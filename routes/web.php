@@ -15,12 +15,9 @@ Route::middleware(['throttle:api'])->group(function () {
         $q = urlencode($q);
         $ytAPIKey = urlencode($ytAPIKey);
         $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=$q&type=video&key=$ytAPIKey";
-        $results = json_decode(@file_get_contents($url));
+        $response = json_decode(@file_get_contents($url));
 
-        return response()->json([
-            'q' => $q,
-            'results' => $results
-        ]);
+        return response()->json($response);
     });
 
 });
