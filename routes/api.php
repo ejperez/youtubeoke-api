@@ -16,3 +16,11 @@ Route::get('search/{q}', function (string $q) {
 
     return response()->json($response);
 });
+
+Route::get('/routes', function () {
+    $routeCollection = Route::getRoutes();
+
+    foreach ($routeCollection as $value) {
+        echo $value->uri() . '<br>';
+    }
+});
